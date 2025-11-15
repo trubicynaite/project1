@@ -10,23 +10,52 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
 
-    .menu-icon{
+    .burger{
         cursor: pointer;
+    }
+
+    >nav.desktop-menu{
+        display: none;
+    }
+
+    @media (min-width: 575px){
+       .burger{
+        display: none;
+       }
+
+        >nav.desktop-menu{
+            display: flex;
+            gap: 20px;
+
+            >a{
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
     }
 `;
 
 const Header = ({ onMenuClick }: HeaderProps) => {
     return (
         <StyledHeader>
-            <div className="left">
+            <div className="name">
                 <h2>Better You</h2>
             </div>
-            <div className="right">
-                <i className="bi bi-list"
-                    style={{ fontSize: '3rem', color: 'white' }}
-                    onClick={onMenuClick}
-                ></i>
-            </div>
+            {/* Burger menu */}
+            <i className="bi bi-list burger"
+                style={{ fontSize: '3rem', color: 'white' }}
+                onClick={onMenuClick}
+            ></i>
+            {/* Desktop menu */}
+            <nav className="desktop-menu">
+                <a>Home</a>
+                <a>Profile</a>
+                <a>Saved Books</a>
+                <a>Upload a Book</a>
+                <a>About Us</a>
+            </nav>
         </StyledHeader>
     );
 }
