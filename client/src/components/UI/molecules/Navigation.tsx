@@ -8,7 +8,7 @@ const StyledNav = styled.div<{ isOpen: boolean }>`
     right: 0;
     width: 200px;
     height: 100vh;
-    background-color: #F58027;
+    background-color: #9634b7;
     z-index: 999;
     transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
     transition: transform 0.3s ease-in-out;
@@ -30,12 +30,11 @@ const Navigation = ({ isOpen }: NavProps) => {
 
     return (
         <StyledNav isOpen={isOpen}>
-            <a>Prisijungti</a>
-            <a>Apie treneri</a>
-            <a>Treniruotes</a>
-            <a>Tvarkarastis</a>
-            <a>Kainos</a>
-            <a>Susisiekti</a>
+            <a>Home</a>
+            <a>Profile</a>
+            <a>Saved Books</a>
+            <a>Upload a Book</a>
+            <a>About Us</a>
         </StyledNav>
     );
 }

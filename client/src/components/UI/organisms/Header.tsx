@@ -4,7 +4,7 @@ import { HeaderProps } from "../../../types";
 const StyledHeader = styled.header`
     height: 80px;
     padding: 5px 20px;
-    background-color: #F58027;
+    background-color: #9634b7;
 
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,7 @@ const Header = ({ onMenuClick }: HeaderProps) => {
     return (
         <StyledHeader>
             <div className="left">
-                <h2>Vardas Pavarde</h2>
+                <h2>Better You</h2>
             </div>
             <div className="right">
                 <i className="bi bi-list"
