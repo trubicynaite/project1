@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
         display: none;
     }
 
-    @media (min-width: 575px){
+    @media (min-width: 768px){
        .burger{
         display: none;
        }
