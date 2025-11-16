@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import * as Yup from 'yup';
 import styled from "styled-components";
 
@@ -60,7 +60,112 @@ const Register = () => {
     })
     return (
         <StyledReg>
-
+            <h2>Register</h2>
+            <form onSubmit={formik.handleSubmit}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text"
+                        name="username" id="username"
+                        placeholder="Create username."
+                        value={formik.values.username}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.username && formik.errors.username &&
+                        <p>{formik.errors.username}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input type="email"
+                        name="email" id="email"
+                        placeholder="Enter your email."
+                        value={formik.values.email}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.email && formik.errors.email &&
+                        <p>{formik.errors.email}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="firstName">First name:</label>
+                    <input type="text"
+                        name="firstName" id="firstName"
+                        placeholder="Enter your first name."
+                        value={formik.values.firstName}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.firstName && formik.errors.firstName &&
+                        <p>{formik.errors.firstName}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="lastName">Last name:</label>
+                    <input type="text"
+                        name="lastName" id="lastName"
+                        placeholder="Enter your last name."
+                        value={formik.values.lastName}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.lastName && formik.errors.lastName &&
+                        <p>{formik.errors.lastName}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="dob">Date of birth:</label>
+                    <input type="date"
+                        name="dob" id="dob"
+                        placeholder="Enter your last date of birth."
+                        value={formik.values.dob}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.dob && formik.errors.dob &&
+                        <p>{formik.errors.dob}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="password">Create password:</label>
+                    <input type="password"
+                        name="password" id="password"
+                        placeholder="Create password."
+                        value={formik.values.password}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.password && formik.errors.password &&
+                        <p>{formik.errors.password}</p>
+                    }
+                </div>
+                <div>
+                    <label htmlFor="passwordRepeat">Repeat password:</label>
+                    <input type="password"
+                        name="passwordRepeat" id="passwordRepeat"
+                        placeholder="Repeat your created password."
+                        value={formik.values.passwordRepeat}
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                    />
+                    {
+                        formik.touched.passwordRepeat && formik.errors.passwordRepeat &&
+                        <p>{formik.errors.passwordRepeat}</p>
+                    }
+                </div>
+                <input type="submit" value="Register" />
+                {
+                    error && <p>{error}</p>
+                }
+            </form>
+            <Link to="/login">Already have an account? Go login.</Link>
         </StyledReg>
     );
 }
