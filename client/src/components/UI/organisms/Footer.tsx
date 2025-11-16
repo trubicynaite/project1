@@ -31,7 +31,7 @@ const StyledFooter = styled.footer`
 const Footer = () => {
     return (
         <StyledFooter>
-            <p>&copy; Jovita Trubicynaite</p>
+            <p>&copy; Jovita Trubicynaite 2025</p>
             <a href="/">Privacy Policy</a>
             <a href="/">Terms of Service</a>
             <a href="/">Contact Us</a>
