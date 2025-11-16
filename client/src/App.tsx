@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router";
 
 import Layout from "./components/outlets/Layout";
 import Home from "./components/pages/Home";
-import Books from "./components/pages/Books";
+import SavedBooks from "./components/pages/SavedBooks";
 import SpecificBookPage from "./components/pages/SpecificBookPage";
 import EditBook from "./components/pages/EditBook";
 import Login from "./components/pages/Login";
@@ -17,7 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="books" element={<Books />} />
+          <Route path="savedBooks" element={<SavedBooks />} />
           <Route path="books/:id" element={<SpecificBookPage />} />
           <Route path="edit/:id" element={<EditBook />} />
           <Route path="register" element={<Register />} />
