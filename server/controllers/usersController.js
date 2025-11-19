@@ -46,3 +46,32 @@ export const register = async (req, res) => {
         await client.close();
     }
 };
+
+export const login = async (req, res) => {
+
+    const client = await connectDB();
+
+    try {
+        const DB_RESPONSE = await client.db('project1').collection('users').findOne({ username: req.body.username });
+
+        if (!DB_RESPONSE) {
+            return res.status(404).send({ error: "No user was found with such username or password." })
+        }
+
+        if (!bcrypt.compareSync(req.body.password, DB_RESPONSE.password)) {
+            return res.status(404).send({ error: "No user was found with such username or password." })
+        }
+
+        const { password, ...userNoPass } = loggedInUser;
+
+        const accessJWT = createAccessJWT(userNoPass);
+
+        res.header("Authorization", accessJWT).send({ success: "User was succesfully logged in.", userData: userNoPass });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: err, message: "Could not log you in. Please try again later." })
+    } finally {
+        await client.close()
+    }
+};
+

@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { register } from "../controllers/usersController";
+import { register, login } from "../controllers/usersController";
 
 const router = Router();
 
@@ -8,7 +8,7 @@ const router = Router();
 router.post('register', register);
 
 // LOGIN - check whether user with given username and password exists
-router.post('/login',);
+router.post('/login', login);
 
 // LOGIN WITH JWT - user gets logged in automaticcaly if user has valid JWT
 router.get('autoLogin',);
