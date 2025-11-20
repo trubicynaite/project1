@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useContext, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import * as Yup from 'yup';
 import styled from "styled-components";
 
@@ -13,6 +13,7 @@ const StyledReg = styled.section`
 const Register = () => {
 
     const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     const context = useContext(UsersContext);
     if (!context) {
@@ -62,7 +63,7 @@ const Register = () => {
                 .trim(),
         }),
         onSubmit: async (values) => {
-            setError("");
+            setError(null);
 
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { passwordRepeat, ...formData } = values;
@@ -82,6 +83,7 @@ const Register = () => {
                     return;
                 }
                 formik.resetForm();
+                navigate("/");
             } catch {
                 setError("Something went wrong. Please try again later.")
             }
