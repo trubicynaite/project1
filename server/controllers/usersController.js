@@ -22,7 +22,7 @@ export const register = async (req, res) => {
             lastName,
             dob,
             password: bcrypt.hashSync(req.body.passwordText, 10),
-            passwordText: req.body.password,
+            passwordText: req.body.passwordText,
             createDate: new Date(),
             publishedBooks: [],
             likedBooks: [],
@@ -63,7 +63,7 @@ export const login = async (req, res) => {
             return res.status(404).send({ error: "No user was found with such username or password." })
         }
 
-        const { password, ...userNoPass } = loggedInUser;
+        const { password, ...userNoPass } = DB_RESPONSE;
 
         const accessJWT = createAccessJWT(userNoPass);
 
@@ -106,7 +106,7 @@ export const autoLogin = async (req, res) => {
             return res.status(404).send({ error: "User not found." });
         }
 
-        const { password, userNoPass } = user;
+        const { password, ...userNoPass } = user;
         res.send({ userData: userNoPass });
     } catch (err) {
         console.error(err);

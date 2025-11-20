@@ -26,8 +26,24 @@ export type User = {
 
 export type UserNoPass = Omit<User, 'password' | 'passwordText'>;
 
-export type UsersReducerActionTypes =
-    { type: 'setData', data: User[] } |
-    { type: 'addUser', newUser: User } |
-    { type: 'editUser', updatedUser: Partial<User> & { _id: string } } |
-    { type: 'logUserOut' };
+export type LoginCredentials = {
+    username: string,
+    password: string
+};
+
+export type UsersContextTypes = {
+    user: UserNoPass | null,
+    login: (credentials: LoginCredentials, keepLoggedIn: boolean) => Promise<{ error?: string; success?: string }>,
+    register: (data: RegisterBody) => Promise<{ error?: string; success?: string }>;
+    editUser: (updates: Partial<Omit<User, "_id" | "createDate" | "password" | "passwordText">>) => Promise<{ error?: string; success?: string }>;
+    logout: () => void;
+};
+
+export type RegisterBody = {
+    username: string,
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    dob: string
+};
