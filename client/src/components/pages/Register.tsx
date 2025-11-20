@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useContext, useState } from "react";
+import { Link } from "react-router";
 import * as Yup from 'yup';
 import styled from "styled-components";
+
+import UsersContext from "../../contexts/UsersContext";
 
 const StyledReg = styled.section`
     
@@ -10,8 +12,13 @@ const StyledReg = styled.section`
 
 const Register = () => {
 
-    const navigate = useNavigate();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
+
+    const context = useContext(UsersContext);
+    if (!context) {
+        throw new Error("UsersContext must be used inside a UsersProvider.")
+    }
+    const { register } = context;
 
     const formik = useFormik({
         initialValues: {
@@ -55,7 +62,29 @@ const Register = () => {
                 .trim(),
         }),
         onSubmit: async (values) => {
+            setError("");
 
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { passwordRepeat, ...formData } = values;
+
+            try {
+                const res = await register({
+                    username: formData.username,
+                    email: formData.email,
+                    password: formData.password,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    dob: formData.dob
+                });
+
+                if (res.error) {
+                    setError(res.error);
+                    return;
+                }
+                formik.resetForm();
+            } catch {
+                setError("Something went wrong. Please try again later.")
+            }
         }
     })
     return (

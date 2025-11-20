@@ -4,9 +4,12 @@ import App from './App.tsx';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { BrowserRouter } from 'react-router';
+import { UsersProvider } from './contexts/UsersContext.tsx';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
     <BrowserRouter>
-        <App />
+        <UsersProvider>
+            <App />
+        </UsersProvider>
     </BrowserRouter>
 )

@@ -100,7 +100,7 @@ const UsersProvider = ({ children }: ChildrenElementProp) => {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
-                    Authotization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(updates)
             });
@@ -141,6 +141,7 @@ const UsersProvider = ({ children }: ChildrenElementProp) => {
                     }
                 })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
