@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { connectDB } from "./helper";
-import { createAccessJWT, validateJWT } from "../middleware/jwt";
+import { connectDB } from "./helper.js";
+import { createAccessJWT, validateJWT } from "../middleware/jwt.js";
 import { ObjectId } from 'mongodb';
 
 export const register = async (req, res) => {

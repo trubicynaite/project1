@@ -1,9 +1,15 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import { User, UserNoPass, UsersContextTypes, ChildrenElementProp, LoginCredentials, RegisterBody } from "../types";
+import { UserNoPass, UsersContextTypes, ChildrenElementProp, LoginCredentials, RegisterBody } from "../types";
 
-const UsersContext = createContext<UsersContextTypes | undefined>(undefined);
+const UsersContext = createContext<UsersContextTypes>({
+    user: null,
+    login: async () => ({ error: "Not implemented" }),
+    register: async () => ({ error: "Not implemented" }),
+    editUser: async () => ({ error: "Not implemented" }),
+    logout: () => { }
+});
 
 const UsersProvider = ({ children }: ChildrenElementProp) => {
 
@@ -87,7 +93,7 @@ const UsersProvider = ({ children }: ChildrenElementProp) => {
     // EDIT USER INFO
 
     const editUser = async (
-        updates: Partial<Omit<User, "_id" | "username" | "dob" | "createDate" | "password" | "passwordText">>
+        updates: Partial<UserNoPass> & { password?: string }
     ) => {
         if (!user) {
             return { error: "User is not logged in." }

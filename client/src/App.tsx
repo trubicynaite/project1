@@ -7,7 +7,7 @@ import SpecificBookPage from "./components/pages/SpecificBookPage";
 import EditBook from "./components/pages/EditBook";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
-import UserPage from "./components/pages/UserPage";
+import EditProfile from "./components/pages/EditProfile";
 import UploadBook from "./components/pages/UploadBook";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="edit/:id" element={<EditBook />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="user" element={<UserPage />} />
+          <Route path="profile" element={<EditProfile />} />
           <Route path="uploadBook" element={<UploadBook />} />
         </Route>
       </Routes>

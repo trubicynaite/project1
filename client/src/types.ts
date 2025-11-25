@@ -35,7 +35,7 @@ export type UsersContextTypes = {
     user: UserNoPass | null,
     login: (credentials: LoginCredentials, keepLoggedIn: boolean) => Promise<{ error?: string; success?: string }>,
     register: (data: RegisterBody) => Promise<{ error?: string; success?: string }>;
-    editUser: (updates: Partial<Omit<User, "_id" | "createDate" | "password" | "passwordText">>) => Promise<{ error?: string; success?: string }>;
+    editUser: (updates: Partial<UserNoPass> & { password?: string }) => Promise<{ error?: string; success?: string }>;
     logout: () => void;
 };
 
@@ -47,3 +47,10 @@ export type RegisterBody = {
     lastName: string,
     dob: string
 };
+
+export type ProfileEditForm = {
+    email: string,
+    firstName: string,
+    lastName: string,
+    password: string
+}
