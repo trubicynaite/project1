@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { HeaderProps } from "../../../types";
+import { NavLink } from "react-router";
 
 const StyledHeader = styled.header`
     height: 80px;
@@ -50,11 +51,11 @@ const Header = ({ onMenuClick }: HeaderProps) => {
             ></i>
             {/* Desktop menu */}
             <nav className="desktop-menu">
-                <a>Home</a>
-                <a>Profile</a>
-                <a>Saved Books</a>
-                <a>Upload a Book</a>
-                <a>About Us</a>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/savedBooks">Saved Books</NavLink>
+                <NavLink to="/uploadBook">Upload a Book</NavLink>
+                <NavLink to="/aboutUs">About Us</NavLink>
             </nav>
         </StyledHeader>
     );

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavProps } from "../../../types";
+import { NavLink } from "react-router";
 
 const StyledNav = styled.div<{ isOpen: boolean }>`
 
@@ -30,11 +31,11 @@ const Navigation = ({ isOpen }: NavProps) => {
 
     return (
         <StyledNav isOpen={isOpen}>
-            <a>Home</a>
-            <a>Profile</a>
-            <a>Saved Books</a>
-            <a>Upload a Book</a>
-            <a>About Us</a>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/savedBooks">Saved Books</NavLink>
+            <NavLink to="/uploadBook">Upload a Book</NavLink>
+            <NavLink to="/aboutUs">About Us</NavLink>
         </StyledNav>
     );
 }
